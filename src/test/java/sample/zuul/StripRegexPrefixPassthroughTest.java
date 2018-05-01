@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = {"zuul.routes.sample.url=http://localhost:8989", "zuul.routes.sample.path=/some_*_*/**"})
+@SpringBootTest(properties = {"zuul.routes.sample-with-regex.url=http://localhost:8989", "zuul.routes.sample-with-regex.path=/some_*_*/**"})
 @AutoConfigureMockMvc
 public class StripRegexPrefixPassthroughTest {
 

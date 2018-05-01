@@ -4,6 +4,7 @@ import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.netflix.zuul.filters.RouteLocator;
 import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
@@ -38,7 +39,7 @@ public class ZuulSampleApplication {
     
     @Bean
     @Order(-1)
-    public RouteLocator customRouteLocator(ZuulProperties zuulProperties) {
-        return new CustomRouteLocator("/", zuulProperties);
+    public RouteLocator customRouteLocator(ServerProperties server, ZuulProperties zuulProperties) {
+        return new PrefixStrippingRouteLocator(server.getServlet().getServletPrefix(), zuulProperties);
     }
 }

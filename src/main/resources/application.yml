@@ -1,6 +1,6 @@
 zuul:
   routes:
-    first:
+    first-regex:
       path: /first_*_*/**
       url: http://httpbin.org:80
 #      strip-prefix: true
@@ -9,7 +9,7 @@ zuul:
 server:
   port: 8084
   
-  
+
 management:
   endpoints:
     web:
